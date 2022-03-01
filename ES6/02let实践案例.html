@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>let 实践案例</title>
+    <style>
+        .page-header {
+            border-bottom: 1px #ccc solid;
+        }
+
+        .item {
+            width: 50px;
+            height: 20px;
+            border: 1px #ccc solid;
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="page-header">点击切换颜色</h2>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+    <script>
+        // 获取div元素
+        let items = document.getElementsByClassName('item');
+
+        // 遍历并绑定事件
+        for (let i = 0; i < items.length; i++) {
+            items[i].onclick = function () {
+                // this指向当前调用事件函数的dom
+                console.log(this);
+                // 这种也可以，这里想区分 let 和 var 的不同
+                // this.style.background = "pink";
+
+                // 用var定义变量i时这种方式会报错。
+                items[i].style.background = "pink";
+            }
+        }
+        // 当使用var定义时，实际i为全局变量，并且在最后一次i已经被自增为3
+        // 所以会报错
+        {
+            var i = 0;
+        }
+        {
+            var i = 1;
+        }
+        {
+            var i = 2;
+        }
+        // 但是使用let定义
+        // 在事件函数中找i，找不到，便去上层去找，因为let有块级作用域，所以i是当前的i，不是最后自增之后的i
+        {
+            let i = 0;
+            items[i].onclick = function () {
+                console.log(this)
+                // this.style.background = "pink";
+                items[i].style.background = "pink";
+            }
+        }
+        {
+            let i = 1;
+        }
+        {
+            let i = 2;
+        }
+    </script>
+</body>
+
+</html>
