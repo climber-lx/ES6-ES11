@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>rest参数</title>
+</head>
+
+<body>
+    <script>
+        // ES6 引入rest 参数，用于获取函数的实参，用来代替 arguments
+        // ES5 获取实参的方式
+        function date() {
+            // arguments 是一个对应于传递给函数的参数的类数组对象。
+            // arguments对象不是一个 Array 。它类似于Array，但除了length属性和索引元素之外没有任何Array属性。例如，它没有 pop 方法。但是它可以被转换为一个真正的Array
+            console.log(arguments); //
+            console.log(typeof arguments);    // 'object'
+            console.log(arguments[0]); //aa  可以通过数组的方式获取
+            // 转换为真正的数组
+            let args = Array.from(arguments);
+            let args2 = [...arguments];
+            console.log(args, args2); // ['aa', 'bb', 'cc']
+        }
+        date('aa', 'bb', 'cc');
+
+
+        // rest 参数
+        function date2(...args) {
+            console.log(args);   // [1, 2, 3] 是一个数组，就包含filter，some，every，map 等方法
+        }
+        date2(1, 2, 3);
+
+        // rest 参数必须要放到最后
+        function fn(a, b, ...args) {
+            console.log(a); // 1
+            console.log(b); // 2
+            console.log(args);  // [3, 4, 5, 6]
+        }
+        fn(1, 2, 3, 4, 5, 6);
+
+        // 不放在后面就会报错
+        // Uncaught SyntaxError: Rest parameter must be last formal parameter
+        // function fn1(a, ...args, b) {
+        //     console.log(a);
+        //     console.log(b);
+        //     console.log(args);
+        // }
+        // fn1(1, 2, 3, 4, 5, 6);
+    </script>
+</body>
+
+</html>

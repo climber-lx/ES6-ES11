@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>箭头函数实践</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background: #58a;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ad"></div>
+    <script>
+        // 需求：点击div 2s后颜色变成橘色
+        // 获取元素
+        let ad = document.getElementById('ad');
+        // 绑定事件
+        ad.addEventListener('click', function () {
+            // 定时器
+            console.log(this); // 这里的this指向 当前点击的dom
+            // 解决办法一：在这里保存一个当前的饿this
+            let _this = this;
+            // setTimeout(function () {
+            //     // 修改背景颜色 this
+            //     console.log(this);// 指向window，所以报错
+            //     // 报错：Uncaught TypeError: Cannot set properties of undefined (setting 'background')
+            //     // this.style.background = 'pink';
+
+            //     // 使用当前的this
+            //     _this.style.background = 'pink';
+            // }, 2000);
+
+            // 解决办法二，使用箭头函数，this 始终指向函数声明的作用域下的 this的值
+            setTimeout(() => {
+                // 修改背景颜色 this
+                console.log(this);// 指向当前函数声明的作用域的this
+                this.style.background = 'pink';
+            }, 2000);
+        })
+
+
+        // 需求2：从数组中返回偶数的元素
+        const arr = [1, 2, 3, 3, 5, 6, 7, 8];
+        const result = arr.filter(function (item) {
+            if (item % 2 === 0) {
+                return true;
+            } else {
+                return false;
+            }
+        })
+        console.log(result);
+        // 使用箭头函数并简写
+        const result1 = arr.filter((item) => { return item % 2 === 0 });
+        // 发现只有一条语句和有且只有一个参数，在简写：去掉() {} 和 return
+        const result2 = arr.filter(item => item % 2 === 0);
+        console.log(result2); // [2, 6, 8]
+
+
+        // 箭头函数适合 与 this 无关的回调；如：定时器，数组的方法回调。
+        // 箭头函数不适合与 this有关的回调，事件回调，对象的方法
+
+        const obj = {
+            name: 'll',
+            getName: function () {
+                console.log(this);   //指向当前的调用者
+                this.name;
+                (() => {
+                    console.log(this)  // 指向obj
+                })()
+            },
+            getAge: () => {
+                console.log(this);   //指向window
+                (() => {
+                    console.log(this)  // 指向window
+                })()
+            }
+        }
+        const obj1 = {
+            name: "loo"
+        }
+        obj.getName();
+        obj.getName.call(obj1);
+        obj.getAge();
+
+
+    </script>
+</body>
+
+</html>

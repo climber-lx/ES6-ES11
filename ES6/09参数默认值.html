@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数参数默认值</title>
+</head>
+
+<body>
+    <script>
+        // ES6 允许给函数参数赋值初始值
+        // 1.形参初始值 具有默认值的参数，一般位置要靠后（潜规则）
+        // 如果放在前面，就会导致赋值可能不准
+        function add(a, b, c = 10) {
+            return a + b + c;
+        }
+        let result = add(1, 2);
+        console.log(result);  //13
+
+        // 2.与解构赋值结合
+        // 对象解构赋值可以，保证形参和实参名称一致即可
+        function connect({ host = '127.0.0.1', username, age, port }) {
+            console.log(host);
+            console.log(username);
+            console.log(age);
+            console.log(port);
+        }
+        connect({
+            age: "ll",
+            username: 20,
+            port: 500
+        })
+
+        // 数组解构赋值也可以
+        function connect2([num1, num2, num3 = 10]) {
+            console.log(num1);
+            console.log(num2);
+            console.log(num3);
+        }
+        connect2([1, 2])
+
+
+    </script>
+</body>
+
+</html>

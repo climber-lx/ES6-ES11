@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模板字符串</title>
+</head>
+
+<body>
+
+    <script>
+        // ES5字符串   ""  ''
+        // ES6 引入新的声明字符串的方式 【 ` ` 】
+        // 1.声明
+        let str = `我也是一个字符串`;
+        console.log(str, typeof str);
+
+        // 2.内容可以直接出现换行符、空格,不改动直接输出
+        let str2 = `<ul>
+                        <li>沈腾</li>
+                        <li>玛丽</li>
+                        <li>艾伦</li>
+                    </ul>`;
+        console.log(str2);
+
+        // 3.变量拼接
+        // ES5用字符串和+ 一起拼接字符串
+        // ES6 模板字符串可以使用变量来替换需要拼接的值.
+        // 变量语法：${变量}
+        let str3 = "魏翔";
+        let out = `${str3}是一个好演员`;
+        console.log(out);
+
+
+
+    </script>
+</body>
+
+</html>

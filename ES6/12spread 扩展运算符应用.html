@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>扩展运算符的应用</title>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <p>1</p>
+    <p>2</p>
+    <script>
+        // 1.数组的合并
+        const kuazi = ["肖央", "王太利"];
+        const fenghuang = ['曾毅', '玲花'];
+        // 使用数组的 concat 方法
+        // const zuixuanxiaopingguo = kuazi.concat(fenghuang);
+        // 使用扩展运算符
+        const zuixuanxiaopingguo = [...kuazi, ...fenghuang];
+        console.log(zuixuanxiaopingguo); //['肖央', '王太利', '曾毅', '玲花']
+
+        // 2.数组的克隆（浅克隆）
+        const sanzhihua = ['E', 'G', 'M'];
+        const sanyecao = [...sanzhihua];
+        console.log(sanyecao);  //['E', 'G', 'M']
+        sanzhihua.push({
+            a: 123
+        });
+        // 更改原数组的引用类型的值，就会影响复制的值，所以证明是浅拷贝
+        const me = [...sanzhihua];
+        console.log(me);    // ['E', 'G', 'M', 3: {a: 456}]
+        sanzhihua[sanzhihua.length - 1].a = 456;
+        console.log(me);    // ['E', 'G', 'M', 3: {a: 456}]
+
+        // 3.将伪数组转为真正的数组
+        const p = document.querySelector('p');
+        // querySelector 返回的一个dom，且取的是第一个
+        console.log(p);
+        const divs = document.querySelectorAll('div');
+        // 返回的是一组
+        console.log(divs);
+        const divArr = [...divs];
+        console.log(divArr); // [div, div, div]
+
+    </script>
+</body>
+
+</html>

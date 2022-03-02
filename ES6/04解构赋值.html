@@ -10,7 +10,34 @@
 
 <body>
     <script>
-        // 
+        // ES6 允许按照一定模式从数组和对象中提取值，对变量进行赋值，这被称为解构赋值
+
+        // 1.数组的解构
+        const F4 = ['xl', 'gl', 'll', 'gx'];
+        let [x, g, ll, xg] = F4;
+        console.log(x);     // xl
+        console.log(g);     // gl
+        console.log(ll);    // ll
+        console.log(xg);    // gx
+
+        // 2.对象的解构
+        const zhao = {
+            name: "zhao",
+            age: 'no',
+            say: function () {
+                console.log('say hello');
+            }
+        }
+        // 注意：对象的解构赋值，变量必须和对象属性名一致。
+        // let { name, age1, say } = zhao;
+        // console.log(name);  // zhao
+        // console.log(age1);  // undefined
+        // console.log(say);   //function () {console.log('say hello');}
+
+        // 也可以单独取一个属性
+        let { say } = zhao;
+        console.log(say);
+
     </script>
 </body>
 
