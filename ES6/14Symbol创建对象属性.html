@@ -9,7 +9,66 @@
 </head>
 
 <body>
+    <script>
+        // 向对象中添加方法 up down
+        let game = {
+            up: function () {
+                console.log('up');
+            },
+            down: function () {
+                console.log('down');
+            }
+        }
 
+        // 声明一个对象
+        let methods = {
+            up: Symbol('up'),
+            down: Symbol('down')
+        };
+
+        game[methods.up] = function () {
+            console.log('改变形状');
+        }
+
+        game[methods.down] = function () {
+            console.log('可以下降');
+        }
+        console.log(game);  // {up: ƒ, down: ƒ, Symbol(): ƒ, Symbol(): ƒ}
+        game['up']();
+        game[methods.up](); // 改变形状
+
+        let say = Symbol('say');
+        let youxi = {
+            name: "狼人杀",
+            [say]: function () {
+                console.log('说话');
+            },
+            [Symbol.for('zibao')]: function () {
+                console.log('自爆');
+            },
+            [Symbol('ll')]: function () {
+                console.log('说话');
+            },
+        }
+        console.log(youxi); //{name: '狼人杀', Symbol(say): ƒ, Symbol(zibao): ƒ}
+        youxi[say](); //说话
+        youxi[Symbol.for('zibao')](); //自爆
+        console.log(Reflect.ownKeys(youxi));// ['name', Symbol(say), Symbol(zibao), Symbol(ll)]
+        youxi[(Reflect.ownKeys(youxi)[3])](); // 说话
+
+
+        // Symbol.hasInstance
+        // Symbol.isConcatSpreadable
+        // Symbol.unscopables
+        // Symbol.match
+        // Symbol.replace
+        // Symbol.search
+        // Symbol.split
+        // Symbol.iterator
+        // Symbol.toPrimitive
+        // Symbol.toStringTag
+        // Symbol.species
+    </script>
 </body>
 
 </html>

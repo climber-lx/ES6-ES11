@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Set </title>
+</head>
+
+<body>
+    <script>
+        // 声明一个Set 
+        let s = new Set();
+        let s2 = new Set(['大事儿', '小事儿', '好事儿', '坏事儿', '小事儿']);
+
+        // 元素个数
+        console.log(s2.size); // 4
+        // 添加新的元素
+        s2.add('喜事儿');
+        console.log(s2);    // Set(5) {'大事儿', '小事儿', '好事儿', '坏事儿', '喜事儿'}
+        // 删除元素
+        s2.delete('坏事儿');
+        console.log(s2); // Set(4) {'大事儿', '小事儿', '好事儿', '喜事儿'}
+        // 检测元素
+        console.log(s2.has('糟心事'));  // false
+        // 清空
+        // s2.clear();
+        console.log(s2.clear());
+        console.log(s2); // Set(0) {size: 0}
+        for (const v of s2) {
+            console.log(v); // 大事儿 小事儿 好事儿 喜事儿
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> 生成器函数实例2</title>
+</head>
+
+<body>
+    <script>
+        // 模拟获取 用户数据 订单数据 商品数据
+        function getUser() {
+            setTimeout(() => {
+                let data = "user data";
+                // 调用next方法，并且将数据传入
+                iterator.next(data);
+            }, 1000);
+        }
+        function getUserInfo(users) {
+            setTimeout(() => {
+                console.log(users);
+                let data = "user info data";
+                iterator.next(data);
+            }, 1000);
+        }
+        function getUserGoods(info) {
+            setTimeout(() => {
+                console.log(info);
+                let data = "user goods data";
+                iterator.next(data);
+            }, 1000);
+        }
+
+        function* gen() {
+            let users = yield getUser();
+            let info = yield getUserInfo(users);
+            let goods = yield getUserGoods(info);
+        }
+
+        let iterator = gen();
+        iterator.next();
+
+    </script>
+</body>
+
+</html>

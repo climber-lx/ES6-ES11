@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Map</title>
+</head>
+
+<body>
+    <script>
+        // 声明 Map
+        let m = new Map();
+
+        // 添加元素
+        m.set('name', 'lll');
+        m.set('change', function () {
+            console.log("我们可以改变");
+        });
+        let key = {
+            school: 'xinchi'
+        };
+        m.set(key, ['北京', '上海', '深圳']);
+        console.log(m);
+
+        // size
+        console.log(m.size);    //3
+
+        // 删除
+        m.delete('name');
+        console.log(m); //
+
+        // 获取
+        console.log(m.get('change')); //function () {console.log("我们可以改变");}
+        console.log(m.get(key)); // ['北京', '上海', '深圳']
+
+        // 清空
+        // m.clear();
+        // console.log(m.clear());  // undefiend
+        console.log(m); // Map(0) {size: 0}
+
+        // 遍历
+        for (const v of m) {
+            console.log(v); // [{school: 'xinchi'},['北京', '上海', '深圳']
+        }
+
+    </script>
+</body>
+
+</html>

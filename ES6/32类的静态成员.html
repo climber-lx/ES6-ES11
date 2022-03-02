@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>类的静态成员 </title>
+</head>
+
+<body>
+    <script>
+        function Phone() {
+
+        }
+        Phone.name = "手机";
+        Phone.change = function () {
+            console.log("我可以改变世界");
+        }
+        Phone.prototype.size = '5.5cm';
+
+        let nokie = new Phone();
+
+        console.log(nokie.name); // undefined
+        // 报错： Uncaught TypeError: nokie.change is not a function
+        // nokie.change();
+        console.log(nokie.size);   // 5.5cm
+        // 实例对象的属性和构造函数本身的属性和方法不挂钩，和原型的属性和方法挂钩
+
+        class Phone {
+            // 静态属性
+            static name = "手机";
+        }
+
+
+    </script>
+</body>
+
+</html>

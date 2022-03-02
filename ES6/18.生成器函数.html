@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成器函数</title>
+</head>
+
+<body>
+    <script>
+        // 生成器其实就是一个特殊的函数
+        // 异步编程  纯回调函数  node fs ajax mongodb
+        function* fun() {
+            console.log("hello generator");
+        }
+        let iterator = fun();
+        console.log(iterator);  //gen {<suspended>}
+        iterator.next();  //hello generator
+
+        // yield 函数代码的分隔符，每调用一个 next 执行一个代码块
+        function* gen() {
+            // console.log(111);
+            yield '一只没有耳朵';
+            // console.log(222);
+            yield '一只没有尾巴';
+            // console.log(333);
+            yield '真奇怪';
+            // console.log(444);
+        }
+        let iterators = gen();
+        // iterators.next();   //111
+        // iterators.next();   //222
+        // iterators.next();   //333
+        // iterators.next();   //444
+        console.log(iterators.next());   //{value: '一只没有耳朵', done: false}
+        console.log(iterators.next());   //{value: '一只没有尾巴', done: false}
+        console.log(iterators.next());   //{value: '真奇怪', done: false}
+        console.log(iterators.next());   //{value: undefined, done: true}
+
+    </script>
+</body>
+
+</html>

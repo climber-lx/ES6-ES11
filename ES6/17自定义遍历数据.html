@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义遍历数据</title>
+</head>
+
+<body>
+    <script>
+        //声明对象
+        const banji = {
+            name: "z终极一班",
+            stus: [
+                "xiaoming",
+                "xiaoning",
+                "xiaotian",
+                "knight"
+            ],
+            //报错：Uncaught TypeError: Result of the Symbol.iterator method is not an object
+            [Symbol.iterator]() {
+                // 索引变量
+                let index = 0;
+                let _this = this;
+                // 报错： undefined is not a function
+                return {
+                    // 报错：Uncaught TypeError: Iterator result undefined is not an object
+                    next: function () {
+                        // 一直打印
+                        // return { value: 'abc', done: false }
+                        if (index < _this.stus.length) {
+                            const result = { value: _this.stus[index], done: false };
+                            // 下标自增
+                            index++;
+                            return result;
+                        } else {
+                            return { value: undefined, done: true }
+                        }
+                    }
+                }
+            }
+        }
+        console.log(banji);
+
+        //遍历这个对象
+        for (let v of banji) {
+            // 不定义[Symbol.iterator] 报错
+            // 报错：banji is not iterable
+            console.log(v); // xiaoming  xiaoning  xiaotian  knight
+        }
+    </script>
+</body>
+
+</html>
