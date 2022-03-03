@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class继承</title>
+</head>
+
+<body>
+    <script>
+        class Phone {
+            //构造方法[并不一定非得要]
+            constructor(brand, price) {
+                this.brand = brand;
+                this.price = price;
+            };
+
+            // 父类的成员属性
+            call() {
+                console.log(this.brand);
+                console.log('我可以打电话');
+            }
+        }
+
+        class SmartPhone extends Phone {
+            // 构造方法
+            constructor(brand, price, color, size) {
+                super(brand, price);  // 其实就类似ES5的 Phone.call(this,brand,price)
+                this.color = color;
+                this.size = size;
+            }
+
+            photo() {
+                console.log('拍照');
+            }
+
+            playGame() {
+                console.log('玩游戏');
+            }
+
+            call() {
+                console.log('我可以进行视频通话');
+            }
+        }
+
+        const xiaomi = new SmartPhone('xiaomi', 2999, 'black', '4.7inch');
+        console.log(xiaomi);    //SmartPhone{brand: "xiaomi" color: "black" price: 2999  size: "4.7inch"}
+        // 未覆盖父类的方法，调用父类的方法
+        xiaomi.call();  // xiaomi  我可以打电话  
+        // 子类复写父类的方法，就调用的是子类的方法。
+        xiaomi.call();  // 我可以进行视频通话  
+        xiaomi.photo();     //拍照
+        xiaomi.playGame();  //玩游戏
+    </script>
+</body>
+
+</html>

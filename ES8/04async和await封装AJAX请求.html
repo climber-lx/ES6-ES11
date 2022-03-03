@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>async和await封装AJAX请求</title>
+</head>
+
+<body>
+    <script>
+        // 发送ajax请求，返回的结果是 promise 对象。
+        function sendAJAX(url) {
+            return new Promise((resolve, reject) => {
+                // 1.创建对象
+                const xhr = new XMLHttpRequest();
+                // 2.初始化
+                xhr.open('GET', url);
+                // 3.发送
+                xhr.send();
+                // 4.事件绑定
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            resolve(xhr.response);
+                        } else {
+                            reject(xhr.status);
+                        }
+                    }
+                }
+            })
+        }
+        let url1 = "https://api.apiopen.top/getJoke";
+        let url2 = "https://tianqiapi.com/api?version=v1&city=北京&appid=23941491&appsecret=TXoD5e8P";
+        // 测试
+        // sendAJAX(url1).then(value => {
+        //     console.log(value);
+        // }, reason => {
+        //     console.log(reason);
+        // })
+
+        async function main() {
+            let result = await sendAJAX(url1);
+            let result2 = await sendAJAX(url2);
+            console.log([result, result2]);
+        }
+        main();
+    </script>
+</body>
+
+</html>

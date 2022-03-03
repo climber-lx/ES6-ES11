@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则断言</title>
+</head>
+
+<body>
+    <script>
+        // 声明字符串
+        let str = 'JS5211314你知道么555啦啦啦';
+
+        // 正向断言
+        const reg = /\d+(?=啦)/;
+        const result = reg.exec(str);
+        console.log(result); //555
+
+        // 反向断言
+        const reg2 = /(?<=么)\d+/;
+        const result2 = reg2.exec(str);
+        console.log(result2); //555
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class的set-get</title>
+</head>
+
+<body>
+    <script>
+        // get 和 set
+        class Phone {
+            price = 500;
+            get _price() {
+                console.log('价格属性被读取了');
+                return this.price;
+            }
+            // 如果不传参数就报错
+            // 报错：Uncaught SyntaxError: Setter must have exactly one formal parameter.
+            set _price(newVal) {
+                this.price = newVal;
+                console.log('价格属性被修改了');
+            }
+        }
+
+        // 实例化对象
+        let s = new Phone();
+        console.log(s._price);
+        s._price = 'free';
+        console.log(s._price);
+    </script>
+</body>
+
+</html>

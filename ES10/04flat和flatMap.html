@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串扩展方法trimStart和trimEnd</title>
+</head>
+
+<body>
+    <script>
+        // flat  平
+        //将多维数组转为低位数组
+
+        const arr = [1, 2, 3, [4, 5]];
+        console.log(arr.flat()); //  [1, 2, 3, 4, 5]
+        const arr2 = [1, 2, 3, [4, 5, [6, 7]]];
+        // 参数为深度 是一个数字,【降低几个维度】，默认是一个维度
+        console.log(arr2.flat()); // [1, 2, 3, 4, 5, Array(2)]
+        console.log(arr2.flat(2)); // [1, 2, 3, 4, 5, 6, 7]
+        const arr3 = [1, 2, 3, [4, 5, [6, 7, [8, 9]]]];
+        console.log(arr3.flat());   //[1, 2, 3, 4, 5, Array(3)]
+        console.log(arr3.flat(2));  //[1, 2, 3, 4, 5, 6, 7, Array(2)]
+        console.log(arr3.flat(3));  // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+        // flatMap
+        // 相当于map和flat的结合
+        const arr4 = [1, 2, 3, 4];
+        const result = arr4.map(item => [item * 10]);
+        const result2 = arr4.flatMap(item => [item * 10]);
+        console.log(result);    //[[10], [20], [30], [40]]
+        console.log(result2); //[10, 20, 30, 40]
+
+    </script>
+</body>
+
+</html>

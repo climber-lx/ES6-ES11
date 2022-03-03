@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>es7新特性</title>
+</head>
+
+<body>
+    <script>
+        // 1.includes 判断数组中是否包含某个元素
+        // includes  和  indexOf 一样，比
+        // indexOf 也可以查找数组中的元素，只是返回结果不直观，需要使用判断是否大于-1判断有无该元素。
+        const mingzhu = ['西游记', '红楼梦', '三国演义', '水浒传'];
+
+        // 判断
+        console.log(mingzhu.includes('西游记'));    // true
+        console.log(mingzhu.indexOf('西游记') >= -1 ? true : false); // true
+        console.log(mingzhu.includes('金瓶梅'));    // false
+
+        // ** 幂运算
+        console.log(2 ** 10);   // 1024
+        console.log(Math.pow(2, 10));    // 1024
+
+
+    </script>
+</body>
+
+</html>

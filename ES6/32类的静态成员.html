@@ -21,17 +21,27 @@
 
         let nokie = new Phone();
 
+        // name 和 change 是属于构造函数的属性和方法，不能和new的实例挂钩。
         console.log(nokie.name); // undefined
         // 报错： Uncaught TypeError: nokie.change is not a function
         // nokie.change();
+        // 实例对象和构造函数的原型挂钩
         console.log(nokie.size);   // 5.5cm
         // 实例对象的属性和构造函数本身的属性和方法不挂钩，和原型的属性和方法挂钩
+        // 实例对象的属性和构造函数的属性是不相通的，实例对象的属性和构造函数的原型对象相通
 
-        class Phone {
+        class Phones {
             // 静态属性
             static name = "手机";
+            static change() {
+                console.log("call me");
+            }
         }
 
+        let nokia = new Phones();
+        console.log(nokia.name); // undefined
+        console.log(Phones.name);    // 手机
+        // 对于 static 标记的属性和方法它属于类而不属于实例对象。
 
     </script>
 </body>

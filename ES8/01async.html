@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>async</title>
+</head>
+
+<body>
+    <script>
+        async function fn() {
+            // 返回一个字符串
+            // return '尚硅谷';
+            // 返回的结果不是一个 Promise 类型的对象，返回的结果就是 成功的 Promise 对象
+            // return;
+            // 抛出错误，返回的结果实一个失败的 Promise
+            // throw new Error('出错啦');
+            // 返回的结果如果是一个 Promise 对象
+            return new Promise((resolve, reject) => {
+                // resolve('成功的数据');
+                reject('失败的错误');
+            })
+        }
+        const result = fn();
+        // fn函数 return 一个字符串，返回的是一个成功的promise,,值为return的值
+        // 只return;   返回的是一个成功的Promise，值为undefined
+        // 1.整理：返回的结果不是一个 Promise 类型的对象，返回的结果就是 成功的 Promise 对象，值为 return的值
+        // 2.抛出异常：返回的是一个失败的promise，值为抛出的值。
+        // 3.返回的结果如果是一个 Promise 对象，是根据promise的状态决定，值为Promise返回的值。
+        console.log(result);
+
+        // 调用then方法
+        result.then(value => {
+            console.log(value);
+        }, reason => {
+            console.log(reason);
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6 模块化</title>
+</head>
+
+<body>
+    <!-- 之前的这种引入会报错。Uncaught SyntaxError: Unexpected token 'export'-->
+    <!-- 需要添加属性 type 为 module -->
+    <!-- <script src="./m1.js"></script> -->
+    <!-- 起一个服务打开 -->
+    <!-- <script type="module">
+        // // 1.通用的导入方方式
+        // // 引入 m1.js 模块内容
+        // import * as m1 from './js/m1.js';
+        // // 引入 m2.js 模块内容
+        // import * as m2 from './js/m2.js';
+        // // 引入 m3.js 模块内容
+        // import * as m3 from './js/m3.js';
+
+        // 2.解构赋值形式
+        import { school, teach } from './js/m1.js';
+        // 如果导出模块一致，可以使用起别名的方式导入
+        import { school as guigu, findJob } from './js/m2.js';
+        import { default as m3 } from './js/m3.js';
+        console.log(m3); // {school: 'll', change: ƒ}
+
+        // 3.简便形式，针对默认暴露
+        import m3 from './js/m3.js';
+        console.log(m3);
+
+    </script> -->
+
+    <script src="./js/app.js" type="module"></script>
+</body>
+
+</html>

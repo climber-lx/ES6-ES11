@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>await</title>
+</head>
+
+<body>
+    <script>
+        // 创建 promise 对象
+        const p = new Promise((resolve, reject) => {
+            // resolve('用户数组');
+            reject('失败啦');
+        })
+
+        // await 要放在 async 函数中
+        async function main() {
+            // await p 实际就拿到p的then方法返回的结果
+            try {
+                let result = await p;
+                console.log(result); // 用户数组
+            } catch (error) {
+                console.log(error); // 失败了
+            }
+        }
+        // 调用函数
+        main();
+    </script>
+</body>
+
+</html>

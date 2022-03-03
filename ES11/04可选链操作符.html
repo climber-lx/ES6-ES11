@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>可选链操作符</title>
+</head>
+
+<body>
+    <script>
+        //  ?.
+        function main(config) {
+            // 之前取值之前判断
+            // const daHost = config && config.db && config.db.host;
+            // 如果不判断取值，如果没有会报错
+            // 使用 ?. 方式判断
+            const dbHost2 = config ?.db ?.host;
+            console.log(dbHost2);  //127.0.0.1
+            // 如不传值就会报错：Uncaught TypeError: Cannot read properties of undefined (reading 'db')
+            console.log(config.db.host);  //127.0.0.1
+        }
+        main({
+            db: {
+                host: "127.0.0.1",
+                user: "ll"
+            }
+        });
+    </script>
+</body>
+
+</html>

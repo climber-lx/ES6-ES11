@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES5继承</title>
+</head>
+
+<body>
+    <script>
+        // 手机
+        function Phone(brand, price) {
+            this.brand = brand;
+            this.price = price;
+        }
+
+        Phone.prototype.call = function () {
+            console.log("我可以打电话");
+        }
+
+        // 智能手机
+        function SmartPhone(brand, price, color, size) {
+            Phone.call(this, brand, price);
+            this.color = color;
+            this.price = price;
+            this.size = size;
+        }
+
+        // 设置子级构造函数的原型（必须指定子类的原型）
+        // 将子类的原型和父类构造函数进行挂钩
+        console.log(SmartPhone.prototype); // {constructor: ƒ     constructor: ƒ SmartPhone(brand, price, color, size)}
+        SmartPhone.prototype = new Phone;
+        console.log(SmartPhone.prototype);//Phone {brand: undefined     constructor: ƒ SmartPhone(brand, price, color, size)    photo: ƒ ()     price: undefined}
+        // 这个可指定也可以不指定
+        SmartPhone.prototype.constructor = SmartPhone;
+        console.log(SmartPhone.prototype);//Phone {brand: undefined     constructor: ƒ SmartPhone(brand, price, color, size)    photo: ƒ ()     price: undefined}
+
+        // 声明子类的方法
+        SmartPhone.prototype.photo = function () {
+            console.log("我可以拍照");
+        }
+
+        SmartPhone.prototype.playGame = function () {
+            console.log("我可以玩游戏");
+        }
+
+        const chuizi = new SmartPhone('锤子', 1499, '黑色', '5.5inch');
+        console.log(chuizi);//SmartPhone {brand: '锤子', price: 1499, color: '黑色'}
+        console.log(chuizi.__proto__); // 可以看到子类声明的photo和playGame方法
+        console.log(chuizi.__proto__.__proto__);// 可以看到父类声明的call方法
+        chuizi.call();      //我可以打电话
+        chuizi.photo();     //我可以拍照
+        chuizi.playGame();      //我可以玩游戏
+
+    </script>
+</body>
+
+</html>

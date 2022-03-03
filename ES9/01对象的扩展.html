@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象的扩展</title>
+</head>
+
+<body>
+    <script>
+        /*
+            Rest参数 与 spread 扩展运算符在 ES6 中已经引入，不过ES6中只针对数组。
+            在ES9中为对象提供了像数组一样的rest参数和扩展运算符
+        */
+
+        function connect({ host, port, ...user }) {
+            console.log(host);
+            console.log(port);
+            console.log(user);
+        }
+        connect({
+            host: "127.0.0.1",
+            port: 200,
+            user: 'll',
+            pwd: 123
+        })
+
+        const a = {
+            a: 123
+        }
+        const b = {
+            b: 123
+        }
+        const c = {
+            c: 123
+        }
+        const msg = [...a, ...b, ...c];
+        console.log(msg);
+
+
+    </script>
+</body>
+
+</html>

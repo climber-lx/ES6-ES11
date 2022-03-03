@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object.fromEntries</title>
+</head>
+
+<body>
+    <script>
+        // 二维数组
+        const arr = Object.fromEntries([
+            ['name', 'll'],
+            ['xueke', 'Java,web,c++']
+        ]);
+        console.log(arr);   //{name: 'll', xueke: 'Java,web,c++'}
+
+        // Map
+        const m = new Map();
+        m.set('name', "ll");
+        console.log(m); // Map(1) {'name' => 'll'}
+        const result = Object.fromEntries(m);
+        console.log(result);    // {name: 'll'}
+
+        // Object.
+        const arr2 = Object.entries({
+            name: 'll'
+        })
+        console.log(arr2);  //[['name', 'll']]
+
+    </script>
+</body>
+
+</html>

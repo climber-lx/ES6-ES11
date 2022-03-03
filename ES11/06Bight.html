@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bight</title>
+</head>
+
+<body>
+    <script>
+        // 大整型
+        let n = 521n;
+        console.log(n, typeof n);   //521n 'bigint'
+
+        // 函数
+        let b = 123;
+        console.log(BigInt(b));     // 123n
+        // 报错：06Bight.html:20 Uncaught RangeError: The number 1.2 cannot be converted to a BigInt because it is not an integer
+        // console.log(BigInt(1.2));
+
+        // 大数值运算
+        let max = Number.MAX_SAFE_INTEGER;
+        console.log(max + 1);   //9007199254740992
+        console.log(max + 2);   //9007199254740992
+        console.log(max + 3);   //9007199254740994
+        // 发现 结果有问题，不能在加
+
+        // 可以采用 BigInt
+        console.log(BigInt(max));   //9007199254740991n
+        console.log(BigInt(max) + BigInt(1));   //9007199254740992n
+        console.log(BigInt(max) + BigInt(2));   //9007199254740993n
+
+    </script>
+</body>
+
+</html>

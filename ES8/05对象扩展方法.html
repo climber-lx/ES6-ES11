@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05对象扩展方法</title>
+</head>
+
+<body>
+    <script>
+        // 声明对象
+        const school = {
+            name: "lll",
+            cities: ['北京', '上海', '深圳'],
+            xueke: ['web', 'java', 'c++']
+        }
+
+        // 获取对象所有的键
+        console.log(Object.keys(school)); // ["name","cities","xueke"]
+        // 获取对象所有的值
+        console.log(Object.values(school)); //['lll', Array(3), Array(3)]
+        console.log(Object.entries(school));
+        // 返回一个多维数组，每一个元素是 [键, 值]
+        //[['name', 'lll'],['cities', Array(3)],['xueke', Array(3)]]
+        // 创建Map
+        const m = new Map(Object.entries(school));
+        console.log(m);
+        console.log(m.get('cities'));  //['北京', '上海', '深圳']
+        // Object.entries() 和 Map是一个相逆
+
+        // 对象属性的描述对象
+        console.log(Object.getOwnPropertyDescriptors(school));
+        //[cities: {value: Array(3), writable: true, enumerable: true, configurable: true}]
+
+        // 第一个参数为原型对象，第二个参数为描述对象【必须是一个对象】
+        const obj = Object.create(null, {
+            name: {
+                // 设置值
+                value: 'll',
+                // 属性特点
+                // 是否可写
+                writable: true,
+                // 是否可以删除
+                configurable: true,
+                // 是否可以枚举
+                enumerable: true
+            }
+        })
+        console.log(obj);
+        obj.name = "1ooo1"
+
+
+    </script>
+</body>
+
+</html>

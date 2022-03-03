@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象方法扩展</title>
+</head>
+
+<body>
+    <script>
+        // 1. Object.is  判断两个值是否完全相等
+        // 类似于 === 但是又有些地方不一样 如：对于NaN来言， Object.is(NaN, NaN) 为真，但是 NaN === NaN 为 false
+        console.log(Object.is(120, 120));   //  true
+        console.log(Object.is(120, '120')); //  false
+        console.log(Object.is(NaN, NaN));   //  true
+        console.log(NaN === NaN);   //  false
+        let obj1 = { name: 123 };
+        let obj2 = { name: 123 };
+        console.log(Object.is(obj1, obj2)); // false
+
+        // 2.Object.assign 对象的合并
+        let cofig1 = {
+            host: '127.0.0.1',
+            port: 200,
+            name: 'll',
+            size: 222
+        };
+        let cofig2 = {
+            host: 'localhost',
+            port: 300,
+            name: 'lld',
+            big: 666
+        };
+        // 第一个参数为模板，第二个参数为更新的数据【有则覆盖，没有则添加】
+        console.log(Object.assign(cofig1, cofig2)); // {host: 'localhost', port: 300, name: 'lld', size: 222, big: 666}
+
+        // 3.Object.setPrototypeOf  设置原型对象 Object.getPrototypeOf 获取原型对象
+        const school = {
+            name: 'll'
+        };
+        const cities = {
+            xiaoqu: ['北京', '上海', '深圳']
+        };
+        Object.setPrototypeOf(school, cities);
+        console.log(Object.getPrototypeOf(school)); //{xiaoqu: (3) ['北京', '上海', '深圳']
+        console.log(school); //{name: 'll'}
+        console.log(school.__proto__); // {xiaoqu: (3) ['北京', '上海', '深圳'].
+
+
+    </script>
+</body>
+
+</html>
